@@ -1,5 +1,6 @@
 const myViewerDiv = document.getElementById("forgeViewer");
 let viewer = new Autodesk.Viewing.Private.GuiViewer3D(myViewerDiv);
+let av = Autodesk.Viewing;
 
 function initializeViewer(
   model = "./assets/models/sample/building-example.svf"
@@ -19,10 +20,16 @@ function initializeViewer(
     viewer.start();
     viewer.loadModel(options.document, options);
 
-    setCamera(viewer);
+    viewer.addEventListener(av.GEOMETRY_LOADED_EVENT, onModelLoaded, {
+      once: true,
+    });
   });
 }
 initializeViewer();
+async function onModelLoaded() {
+  // startCameraTransition(viewer);
+}
+
 const handleModel = document.getElementById("switch-model");
 handleModel.addEventListener("change", () => {
   if (handleModel.checked) {
@@ -54,6 +61,17 @@ function setCamera(viewer) {
     );
     viewer.navigation.setView(pos, target);
   }, 400);
+}
+function startCameraTransition(viewer) {
+  viewer.hide(20524); // Hide Roof Panels
+  viewer.autocam.shotParams.destinationPercent = 3; // slow down camera movement
+  viewer.autocam.shotParams.duration = 10;
+  // move camera to hero view
+  viewer.setViewFromArray([
+    -1.9418035665709943, -26.747346936530814, 18.603221077622162,
+    -1.9403051859659226, -24.92825998040271, 17.619854897824176, 0, 0, 10,
+    1.865, 1.22, 10, 0,
+  ]);
 }
 
 function onDocumentLoadSuccess(doc) {
