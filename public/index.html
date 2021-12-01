@@ -16,8 +16,9 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
-
+    <link rel="shortcut icon" href="https://lib.cdn.dasiot.site/forge/assets/images/png/bee_logo.png" />
     <!-- socket io -->
+    <link rel="stylesheet" href="./main.css">
     <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"
         integrity="sha384-KAZ4DtjNhLChOB/hxXuKqhMLYvx3b5MlT55xPEiNmREKRzeEm+RVPlTnAn0ajQNs"
         crossorigin="anonymous"></script>
@@ -28,7 +29,12 @@
 </head>
 
 <body>
+    <label class="switch">
+        <input type="checkbox" checked id="switch-model">
+        <span class="slider"></span>
+    </label>
     <div id="forgeViewer"></div>
+
     <script src="./index.js"></script>
 </body>
 
