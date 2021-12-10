@@ -30,16 +30,16 @@ async function onModelLoaded() {
   // startCameraTransition(viewer);
 }
 
-const handleModel = document.getElementById("switch-model");
-handleModel.addEventListener("change", () => {
-  if (handleModel.checked) {
-    initializeViewer("./assets/models/sample/building-example.svf");
-    unloadViewer();
-  } else {
-    initializeViewer("./assets/models/office/beeinventoroffice_3floor.svf");
-    unloadViewer();
-  }
-});
+// const handleModel = document.getElementById("switch-model");
+// handleModel.addEventListener("change", () => {
+//   if (handleModel.checked) {
+//     initializeViewer("./assets/models/sample/building-example.svf");
+//     unloadViewer();
+//   } else {
+//     initializeViewer("./assets/models/office/beeinventoroffice_3floor.svf");
+//     unloadViewer();
+//   }
+// });
 
 function unloadViewer() {
   viewer.finish();
